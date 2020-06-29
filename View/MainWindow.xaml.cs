@@ -10,8 +10,6 @@ namespace Invoices {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-
-            Operation.Read();
         }
 
         private void WindowCommandBar_MouseDown(object sender, MouseButtonEventArgs e) {

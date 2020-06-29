@@ -4,13 +4,14 @@ using SQLite;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 
 namespace Invoices.DatabaseHelpers {
     static class Operation {
 
         static string db_name = "Users.db";
-        static string folder_path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        static string folder_path = Directory.GetCurrentDirectory();
         static string db_path = Path.Combine(folder_path, db_name);
 
         public static void Insert(User user) {
@@ -21,7 +22,7 @@ namespace Invoices.DatabaseHelpers {
             }
         }
 
-        public static List<User> Read() {
+        public static ObservableCollection<User> Read() {
 
             List<User> userList = new List<User>();
 
@@ -30,7 +31,7 @@ namespace Invoices.DatabaseHelpers {
                 userList = connection.Table<User>().ToList();
             }
 
-            return userList;
+            return new ObservableCollection<User>(userList); 
         }
     }
 }

@@ -55,7 +55,8 @@
                     Width="30"
                     Height="30"
                     Padding="0"
-                    Command="{Binding OpenDialogCommand}">
+                    Command="{Binding OpenDialogCommand}"
+                    CommandParameter="{Binding ElementName=Main}">
                 <materialDesign:PackIcon Kind="UserAdd" />
             </Button>
             <Button materialDesign:ShadowAssist.ShadowDepth="Depth4"
@@ -68,54 +69,29 @@
                  >
             </Button>
         </StackPanel>
-        <Grid Margin="0,50,0,0" Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <ListView ItemsSource="{Binding Users}">
+        <Grid Margin="0,50,0,0"
+              Grid.Row="2">
+            <ListView ItemsSource="{Binding Users}"
+                      HorizontalContentAlignment="Stretch"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
+                        <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Name}" />
-                            <TextBlock Text="{Binding Email}" />
+                            <TextBlock Text="{Binding Email}" 
+                                       Margin="20,0,0,0" />
+                            <TextBlock Text="{Binding Address}"
+                                       Margin="20,0,0,0" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="2" DataContext="{Binding SelectedUser}" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <StackPanel Margin="10"
-                            Grid.Column="1"
-                            Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="UserBox"
-                                             VerticalAlignment="Center" />
-                    <TextBlock Text="Name"
-                               VerticalAlignment="Center" />
-                </StackPanel>
-                <StackPanel Margin="10"
-                            Grid.Column="1"
-                            Grid.Row="1"
-                            Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Email"
-                                             VerticalAlignment="Center" />
-                    <TextBlock Text="Email"
-                               VerticalAlignment="Center" />
-                </StackPanel>
-                <StackPanel Margin="10"
-                            Grid.Column="1"
-                            Grid.Row="2"
-                            Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Home"
-                                             VerticalAlignment="Center" />
-                    <TextBlock Text="Adress"
-                               VerticalAlignment="Center" />
-
-                </StackPanel>
             </Grid>
 
         </Grid>

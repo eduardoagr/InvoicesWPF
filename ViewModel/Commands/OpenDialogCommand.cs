@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Invoices.ViewModel {
@@ -19,7 +20,7 @@ namespace Invoices.ViewModel {
         }
 
         public void Execute(object parameter) {
-            MainWindowViewModel.OpenDialog();
+            MainWindowViewModel.OpenDialog(parameter as Window);
         }
     }
 }
